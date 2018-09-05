@@ -1,1 +1,16 @@
+#!/bin/bash
+debesap001=/mnt/debesap001
+debesap001old=/mnt/debesap001.old
+debesap001=$(stat -c%s "$debesap001")
+debesap001old=$(stat -c%s "$debesap001old")
+PERC=$(bc <<< "scale=2; ($debesap001old - $debesap001)/$debesap001 * 100")
+echo the difference between debesap001 and debesap001.old is "$PERC %"
+echo
+if [ "$PERC" -gt "$debesap001old" ]
+then echo "WARNING the new backup is has increased more than 10%"
+fi
 
+if [[ $(find "$debesap001" -mtime +7 -print) ]] 
+then
+  echo "WARNING debesap001 is older than 7 days"
+fi
