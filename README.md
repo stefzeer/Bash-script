@@ -1,5 +1,7 @@
 check.sh script
 
+The script will first mount the remote backup fs to /mnt.
+
 The script's purpose is to compare the new and the old corresponding backup fies i.e debesap001 and debesap001.old by filesize in percentages.
 This is to make sure that the newer backup i.e debesap001 is not >10% than the older backup i.e debesap001.old.
 
@@ -19,6 +21,8 @@ debesap004
 debesap006
 dedchan011
 dedchan012
+
+After the script completes it's job, it will umount /mnt.
 
 If you need backups from different servers to be targetted by the script, please send an email to s.simeonov@kostal.com.
 
