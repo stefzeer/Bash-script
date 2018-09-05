@@ -9,8 +9,6 @@ The script will also check the creation date of the newer backup file i/e debesa
 
 The script is placed in /trans/home/stefan01/ , but feel free to copy it into Your home folder.
 
-/trans/home/stefan01/
-
 NOTE: the script will only work for the backup files mounted in /mnt/
 
 NOTE2: the script will only compare the following backups to the corresponding older backups, i.e debesap001.old : 
