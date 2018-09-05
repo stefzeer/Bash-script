@@ -3,6 +3,8 @@ check.sh script
 The script's purpose is to compare the new and the old corresponding backup fies i.e debesap001 and debesap001.old by filesize in percentages.
 This is to make sure that the newer backup i.e debesap001 is not >10% than the older backup i.e debesap001.old.
 
+The script will also check the creation date of the newer backup file i/e debesap001 and output a "WARNING" message if the backup is older than 7 days.
+
 The script is placed in /trans/home/stefan01/ , but feel free to copy it into Your home folder.
 
 /trans/home/stefan01/
