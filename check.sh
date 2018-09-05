@@ -1,4 +1,6 @@
 #!/bin/bash
+mount 10.20.50.126:/SLES_Backup01 /mnt 
+
 debesap001=/mnt/debesap001
 debesap001old=/mnt/debesap001.old
 debesap001=$(stat -c%s "$debesap001")
@@ -110,3 +112,4 @@ else
 echo "dedchan012 is newer than 7 days"
 fi
 echo ============================================================
+umount /mnt
