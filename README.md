@@ -22,5 +22,5 @@ dedchan012
 
 After the script completes it's job, it will umount /mnt.
 
-If you need backups from different servers to be targetted by the script, please send an email to s.simeonov@kostal.com.
+If you need backups from different servers to be targetted by the script, please send an email to me
 
