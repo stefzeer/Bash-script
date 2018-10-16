@@ -1,0 +1,51 @@
+mount 10.10.10.10:/SLES_Backup01 /mnt
+
+echo
+echo The Log will be stored in /trans/adm_share/scripts/REGULAR_SSC_TASKS/CheckLogs directory!
+echo
+
+exec &> CheckLogs/BackupCheck_$(date +"%m_%d_%Y")
+
+for i in 001 002 003 004 006
+
+do
+
+newbackup=$(stat -c%s "/mnt/debesap${i}")
+oldbackup=$(stat -c%s "/mnt/debesap${i}.old")
+PERC=$(bc <<< "scale=2; ($newbackup - $oldbackup)/$newbackup * 100")
+echo the difference between debesap$i and debesap$i.old is "$PERC %"
+echo
+
+if [[ $(find /mnt/debesap$i -mtime +7 -print) ]]
+then
+  echo "WARNING debesap$i is older than 7 days"
+else
+echo "debesap$i is newer than 7 days"
+fi
+
+echo ============================================================
+
+done
+
+for i in 011 012
+
+do
+
+newbackup1=$(stat -c%s "/mnt/dedchan${i}")
+oldbackup1=$(stat -c%s "/mnt/dedchan${i}.old")
+PERC=$(bc <<< "scale=2; ($newbackup1 - $oldbackup1)/$newbackup1 * 100")
+echo the difference between dedchan$i and dedchan$i.old is "$PERC %"
+echo
+
+if [[ $(find /mnt/dedchan$i -mtime +7 -print) ]]
+then
+  echo "WARNING dedchan$i is older than 7 days"
+else
+echo "dedchan$i is newer than 7 days"
+fi
+
+echo ============================================================
+
+done
+
+umount /mnt
